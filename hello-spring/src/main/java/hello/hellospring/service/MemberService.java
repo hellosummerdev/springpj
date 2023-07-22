@@ -2,8 +2,6 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -24,11 +22,19 @@ public class MemberService {
      */
 
     public Long join(Member member) {
+        //long start = System.currentTimeMillis();
 
-        // 중복된 이름으로 가입 불가
-        validateDuplicateMember(member); // 중복 회원 검증
-        memberRepository.save(member);
-        return member.getId();
+        //try {
+            // 중복된 이름으로 가입 불가
+            validateDuplicateMember(member); // 중복 회원 검증
+            memberRepository.save(member);
+            return member.getId();
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//
+//            System.out.println("timeMs = " + timeMs + "ms");
+//        }
 
     }
 
@@ -43,7 +49,14 @@ public class MemberService {
      * List of all members
      */
     public List<Member> findMember() {
-        return memberRepository.findAll();
+//        long start = System.currentTimeMillis();
+//        try {
+            return memberRepository.findAll();
+//        } finally {
+//            long finish = System.currentTimeMillis();
+//            long timeMs = finish - start;
+//            System.out.println("timeMs = " + timeMs + "ms ");
+//        }
     }
 
     public Optional<Member> findOne (Long memberId) {
