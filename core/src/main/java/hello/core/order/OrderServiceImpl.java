@@ -8,10 +8,15 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
-    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-//    새로운 정책 적용을 위해 FiexedDiscountPolicy를 주석 처리 --> 이렇게 바꾸는 순간 OCP 위반
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+    //    새로운 정책 적용을 위해 FiexedDiscountPolicy를 주석 처리 --> 이렇게 바꾸는 순간 OCP 위반
 //    private final DiscountPolicy discountPolicy = new FiexedDiscountPolicy();
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
