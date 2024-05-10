@@ -13,7 +13,7 @@ public class MemberApp {
 //        MemberService memberService = new MemberServiceImpl();
 
 //        스프링 사용 후
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class); // AppConfig에 있는 설정정보를 스프링컨테이너에 집어넣어서 관리
         MemberService memberService = applicationContext.getBean("memberService", MemberService.class);
 
         Member member = new Member(1L, "memberA", Grade.VIP);

@@ -13,7 +13,7 @@ public class OrderServiceImpl implements OrderService{
         this.discountPolicy = discountPolicy;
     }
 
-    //    새로운 정책 적용을 위해 FiexedDiscountPolicy를 주석 처리 --> 이렇게 바꾸는 순간 OCP 위반
+//    새로운 정책 적용을 위해 FiexedDiscountPolicy를 주석 처리 --> 이런 식으로 정책을 바꾸는 순간 OCP 위반
 //    private final DiscountPolicy discountPolicy = new FiexedDiscountPolicy();
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
